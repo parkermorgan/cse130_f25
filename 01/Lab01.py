@@ -5,7 +5,7 @@
 # 3. Assignment Description:
 #   This program is a guessing game where the user guesses a random number between 1 and a positive integer of the user's choice. The numbers they have guessed are stored within an list and are displayed to the user, along with the total number of guesses they did once they guess the correct number.
 # 4. What was the hardest part? Be as specific as possible.
-#    Because I am taking this class late into my schooling, it came to me pretty easily. However, I had made the mistake of using the max_value variable in my loop when the user was guessing instead of the value_random variable. Because of this the correct answer was always the max value the user input, and it took me a few minutes to realize my mistake. I also had to review the formatting for if statements and while loops since I have been working with other programming languages.
+#    Because I am taking this class late into my schooling, it came to me pretty easily. However, I had made the mistake of using the max_value variable in my loop when the user was guessing instead of the value_random variable. Because of this the correct answer was always the max value the user input, and it took me a few minutes to realize my mistake. I also had to review the formatting for if statements and while loops since I have been working with other programming languages. I also intially was adding the total number of guesses and appending them to the list in every if and elif in the loop, but I put it at the top instead to eliminate redundancy.
 # 5. How long did it take for you to complete the assignment?
 #    Including reading the instructions and reviewing python, the assignment took just under an hour.
 import random
