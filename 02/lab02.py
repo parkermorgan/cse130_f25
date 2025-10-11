@@ -8,7 +8,7 @@
 #      The program converts these constructs into two lists, then combines the
 #      lists into a dictionary. The user enters a username and password.
 #      If the username and password match, a message is displayed approving
-#      the user's correct authentication. If not, a message is displayed 
+#      the user's authentication. If not, a message is displayed 
 #      stating that the user is not authorized. 
 # 4. What was the hardest part? Be as specific as possible.
 #      I would say the hardest part of the assignemnt was figuring out how
@@ -24,23 +24,23 @@
 
 import json
 
-# Load the JSON file and parse its contents
+# Load the JSON file and parse its contents.
 with open('Lab02.json', 'r') as file:
     json_text = file.read()
     data = json.loads(json_text)
 
-# Extract usernames and passwords from the data
+# Extract usernames and passwords from the data.
 usernames = data['username']
 passwords = data['password']
 
-# Link usernames to their corresponding passwords
+# Link usernames to their corresponding passwords.
 credentials = dict(zip(usernames, passwords))
 
-# Prompt the user for login credentials
+# Prompt the user for login credentials.
 username = input('Username: ')
 password = input('Password: ')
 
-# Check if the entered credentials match
+# Check if the entered credentials match.
 if credentials.get(username) == password:
     print('You are authenticated!')
 else:
