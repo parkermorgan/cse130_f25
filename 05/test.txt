@@ -1,0 +1,113 @@
+decompression(filename)
+    READ 'filename.json' AS imageFile
+    arrays <- imageFile.data
+    num_rows <- imageFile.num_rows
+    num_columns <- imageFile.num_columns
+
+    blank <- " "
+    filled <- "#"
+
+    FOR column_index FROM 0 TO num_columns - 1
+        columnData <- arrays[column_index]
+        columnSquares <- empty list
+
+        IF columnData[0] == 0
+            square <- blank
+            start <- 1
+        ELSE
+            square <- filled
+            start <- 0
+
+        FOR i FROM start TO LENGTH(columnData) - 1
+            run_length <- columnData[i]
+            FOR j FROM 1 TO run_length
+                APPEND square TO columnSquares
+            IF square == filled
+                square <- blank
+            ELSE
+                square <- filled
+
+        WHILE LENGTH(columnSquares) < num_rows
+            APPEND blank TO columnSquares
+
+        FOR row FROM 0 TO num_rows - 1
+            DISPLAY columnSquares[row]
+
+BEGIN
+
+  INPUT number_of_columns
+  INPUT number_of_rows
+
+  DECLARE image_matrix[number_of_rows][number_of_columns]
+
+  FOR column FROM 0 TO number_of_columns - 1 DO
+    INPUT column_data  // List of numbers for this column
+
+    DECLARE current_row = 0
+
+    FOR EACH number IN column_data DO
+      IF number == 0 THEN
+        // Empty square
+        image_matrix[current_row][column] = ' '
+        current_row = current_row + 1
+      ELSE
+        // Filled squares
+        FOR i FROM 0 TO number - 1 DO
+          image_matrix[current_row][column] = '#'
+          current_row = current_row + 1
+        END FOR
+      END IF
+    END FOR
+  END FOR
+
+  // Display the image row by row
+  FOR row FROM 0 TO number_of_rows - 1 DO
+    DECLARE line = ""
+    FOR column FROM 0 TO number_of_columns - 1 DO
+      line = line + image_matrix[row][column]
+    END FOR
+    PRINT line
+  END FOR
+
+END
+
+decompression(filename)
+    READ 'filename.json' AS imageFile
+    arrays <- imageFile.data
+    num_rows <- imageFile.num_rows
+    num_columns <- imageFile.num_columns
+
+    blank <- " "
+    filled <- "#"
+
+    DECLARE image_grid AS list of num_rows empty strings
+
+    FOR column_index FROM 0 TO num_columns - 1
+        columnData <- arrays[column_index]
+        columnSquares <- empty list
+
+        IF columnData[0] == 0 THEN
+            square <- blank
+            start <- 1
+        ELSE
+            square <- filled
+            start <- 0
+
+        FOR i FROM start TO LENGTH(columnData) - 1
+            run_length <- columnData[i]
+            FOR j FROM 1 TO run_length
+                APPEND square TO columnSquares
+            END FOR
+            IF square == filled THEN
+                square <- blank
+            ELSE
+                square <- filled
+        WHILE LENGTH(columnSquares) < num_rows
+            APPEND blank TO columnSquares
+    
+        FOR row FROM 0 TO num_rows - 1
+            image_grid[num_rows - row - 1] <- image_grid[num_rows - row - 1] + columnSquares[row]
+
+    FOR row FROM 0 TO num_rows - 1
+        DISPLAY image_grid[row]
+   

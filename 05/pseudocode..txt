@@ -1,0 +1,62 @@
+main()
+    moneyDollars <- getDollars()
+    moneyEuros <- 0.873 * moneyDollars
+    PUT moneyEuros
+
+displayNegative(balances)
+    FOR i <- 0 ... balances.size()
+        IF balances[i] < 0
+            PUT error on the screen
+
+IF year % 4 != 0
+    PUT not a leap year
+
+ELIF year
+    IF year % 100 != 0
+        PUT is a leap year
+    ELIF
+        IF year % 400 != 0
+            PUT is a leap year
+        ELIF
+        PUT not a leap year
+
+isLeap(year)
+    IF year % 4 != 0
+        PUT not a leap year
+    IF year mod 100 != 0
+        PUT is a leap year
+    RETURN NOT year % 400
+
+guessingGame()
+    GET range
+    GET randomNum()
+    guessList <- list
+
+    IF randomNum < range
+        PUT higher
+        guessList += 1
+    ELIF randomNum > range
+        PUT lower
+        guessList += 1
+    ELIF randomNum = range
+        guessList += 1
+        PUT correct and guessList.Count()
+    ELSE
+        PUT error
+
+PROMPT for range
+GET range
+value <- random(1, range)
+WHILE guess != value
+    PROMPT for guess
+    GET guess
+    IF guess > value
+        DISPLAY too high
+        guesses += guess
+    ELSE IF guess < value
+        DISPLAY too low
+        guesses += guess
+    ELSE IF guess = value
+        DISPLAY correct
+        guesses += guess
+DISPLAY guesses
