@@ -1,0 +1,22 @@
+The program will take an array of numbers and sort them from lowest to highest. It will select the number at the highest index in the array (i_check) and then iterate through the array one index at a time to determine if any number is bigger than the current highest. After checking every number, it will take the highest number found (h_num), replace the current value of i_num with h_num, and subtract one from the index to be viewed next. Once the array is fully sorted, the program will print the finished array, then end.
+
+array_sort(array)
+    i_check ← length(array) - 1.      // A
+
+    WHILE i_check > 0                 // B
+        max_index ← 0                 // C
+        max_value ← array[0]          
+
+        FOR i FROM 1 TO i_check       // D
+            IF array[i] > max_value THEN
+                max_value ← array[i]  
+                max_index ← i         
+            END IF
+        END FOR
+
+        swap(array[i_check], array[max_index])  // E
+        i_check ← i_check - 1                   // F
+    END WHILE
+
+    PRINT array // G
+END
