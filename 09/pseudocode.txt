@@ -1,0 +1,64 @@
+// My Version
+
+calculate_days(start, end)
+
+    // A 
+    start_parts <- SPLIT(start, "/")
+    start_month <- start_parts[0]
+    start_day <- start_parts[1]
+    start_year <- start_parts[2]
+
+    // B  
+    end_parts <- SPLIT(end, "/")
+    end_month <- end_parts[0]
+    end_day <- end_parts[1]
+    end_year <- end_parts[2]
+
+    // C 
+    FUNCTION is_leap_year(year)
+
+    // D 
+    start_month_lengths <- [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    IF is_leap_year(start_year)
+        start_month_lengths[1] <- 29
+    END IF
+
+    start_day_num <- 0
+    FOR i FROM 0 TO start_month - 2
+        start_day_num <- start_day_num + start_month_lengths[i]
+    END FOR
+    start_day_num <- start_day_num + start_day
+
+    // E
+    IF is_leap_year(start_year)
+        days_start_year <- 366
+    ELSE
+        days_start_year <- 365
+    END IF
+    start_days_left <- days_start_year - start_day_num
+
+    // F
+    end_month_lengths <- [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    IF is_leap_year(end_year)
+        end_month_lengths[1] <- 29
+    END IF
+
+    end_day_num <- 0
+    FOR i FROM 0 TO end_month - 2
+        end_day_num <- end_day_num + end_month_lengths[i]
+    END FOR
+    end_day_num <- end_day_num + end_day
+
+    // G
+    days_years_between <- 0
+    FOR year FROM start_year + 1 TO end_year - 1
+        IF is_leap_year(year)
+            days_years_between <- days_years_between + 366
+        ELSE
+            days_years_between <- days_years_between + 365
+        END IF
+    END FOR
+
+    number_of_days <- start_days_left + days_years_between + end_day_num
+
+    PRINT number_of_days

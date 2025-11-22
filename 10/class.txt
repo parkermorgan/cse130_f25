@@ -1,0 +1,20 @@
+GET filename
+
+OPEN file with filename
+WHILE file is not empty
+    READ name
+    PUT name
+CLOSE file
+
+number_random <- number_random
+count_guess <- 1
+done <- False
+
+WHILE not done 
+    IF count_guess > 7
+        done <- True
+        PUT out of tries
+
+    ELSE
+        PROMPT for number_guess
+        GET number_guess
